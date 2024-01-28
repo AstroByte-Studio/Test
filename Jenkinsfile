@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        GITHUB_TOKEN_CREDENTIAL_ID = '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 '
+        GITHUB_TOKEN_CREDENTIAL_ID = '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 '
         TAG_NAME = 'v1.0.0'
         RELEASE_NAME = 'Release 1.0.0'
     }
@@ -16,7 +16,7 @@ pipeline {
         stage("Check out") {
             steps {
                 script {
-                    git branch: 'main', credentialsId: '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', url: 'https://github.com/AstroByte-Studio/test.git'
+                    git branch: 'main', credentialsId: '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', url: 'https://github.com/AstroByte-Studio/test.git'
                 }
             }
         }

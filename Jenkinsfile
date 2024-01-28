@@ -38,7 +38,7 @@ pipeline {
         stage("GitHub Release") {
             steps {
                 script {
-                    sh 'brew install gh'
+                    sh 'apt install gh'
                     withCredentials([string(credentialsId: 'jenkins2', variable: 'jenkins2')]) {
                         sh 'gh release create b4 --title \'Build #4' + '\' /target/*.jar'
                     }

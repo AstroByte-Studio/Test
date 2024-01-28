@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        GITHUB_TOKEN_CREDENTIAL_ID = 'your-github-token-credential-id'
+        GITHUB_TOKEN_CREDENTIAL_ID = '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 '
         TAG_NAME = 'v1.0.0'
         RELEASE_NAME = 'Release 1.0.0'
     }
@@ -16,7 +16,7 @@ pipeline {
         stage("Check out") {
             steps {
                 script {
-                    git branch: 'main', credentialsId: 'your-git-credentials-id', url: 'https://github.com/AstroByte-Studio/test.git'
+                    git branch: 'main', credentialsId: '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', url: 'https://github.com/AstroByte-Studio/test.git'
                 }
             }
         }
@@ -49,6 +49,9 @@ pipeline {
                     // Retrieve GitHub token from Jenkins credentials
                     def githubToken = credentials(GITHUB_TOKEN_CREDENTIAL_ID)
 
+                    // Find the artifact file
+                    def artifactFile = findFiles(glob: 'target/*.jar').first()
+
                     // Create a GitHub release using Git and cURL
                     sh """
                         git tag -a ${TAG_NAME} -m "${releaseNotes}"
@@ -68,7 +71,7 @@ pipeline {
 
                         curl -H "Authorization: token ${githubToken}" \
                              -H "Content-Type: application/octet-stream" \
-                             --data-binary "@${artifactFile}" \
+                             --data-binary "@${artifactFile.path}" \
                              "https://uploads.github.com/repos/AstroByte-Studio/test/releases/latest/assets?name=${artifactFile.name}"
                     """
                 }

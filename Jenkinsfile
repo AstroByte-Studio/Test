@@ -8,8 +8,8 @@ pipeline {
 
     environment {
         GITHUB_TOKEN_CREDENTIAL_ID = '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 '
-        TAG_NAME = 'v1.0.2'
-        RELEASE_NAME = 'Release 1.0.2'
+        TAG_NAME = 'v1.0.3'
+        RELEASE_NAME = 'Release 1.0.3'
     }
 
     stages {

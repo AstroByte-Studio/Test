@@ -5,6 +5,10 @@ pipeline {
         maven 'maven-3.9.5'
         jdk "Java17"
     }
+     environment {
+            GITHUB_TOKEN = credentials('your-github-credentials-id') ?: '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'
+      }
+
 
     stages {
         stage("Check out") {
@@ -39,7 +43,8 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'jenkins2', variable: 'jenkins2')]) {
-                        sh 'gh release create b4 --title \'Build #4' + '\' /target/*.jar'
+                        sh "gh auth login --with-token $GITHUB_TOKEN"
+                        sh 'gh release create b6 --title \'Build #6' + '\' /target/*.jar'
                     }
                 }
             }

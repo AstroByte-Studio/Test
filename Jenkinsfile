@@ -5,9 +5,10 @@ pipeline {
         maven 'maven-3.9.5'
         jdk "Java17"
     }
-     environment {
-            GITHUB_TOKEN = credentials('your-github-credentials-id') ?: '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'
-      }
+
+    environment {
+        GITHUB_TOKEN = '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'
+    }
 
 
     stages {

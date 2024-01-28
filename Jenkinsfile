@@ -39,8 +39,8 @@ pipeline {
             steps {
                 script {
                     sh 'brew install gh'
-                    withCredentials([string(credentialsId: 'jenkins', variable: 'GH_TOKEN')]) {
-                        sh 'gh release create b3 --title \'Build #3' + '\' /target/*.jar'
+                    withCredentials([string(credentialsId: 'jenkins2', variable: 'jenkins2')]) {
+                        sh 'gh release create b4 --title \'Build #4' + '\' /target/*.jar'
                     }
                 }
             }

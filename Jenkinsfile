@@ -29,7 +29,7 @@ pipeline {
                     def artifactFile = findFiles(glob: 'target/*.jar').first()
 
                      sh """
-                        curl -H "Authorization: token ${GITHUB_TOKEN}" \
+                        curl -H "Authorization: token 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" \
                         -H "Content-Type: application/octet-stream" \
                         --data-binary @${artifactFile} \
                         "https://uploads.github.com/repos/AstroByte-Studio/test/releases/latest/assets?name=${artifactFile.name}"

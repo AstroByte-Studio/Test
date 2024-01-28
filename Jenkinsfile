@@ -29,6 +29,18 @@ pipeline {
             }
         }
 
+                stage("Set Git Config") {
+                    steps {
+                        script {
+                            // Set Git user identity
+                            sh """
+                                git config --global user.email "phoenixgamer989@gmail.com"
+                                git config --global user.name "PhoenixGamer339"
+                            """
+                        }
+                    }
+                }
+
         stage("GitHub Release") {
             steps {
                 script {

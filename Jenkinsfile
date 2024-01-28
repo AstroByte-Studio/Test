@@ -43,10 +43,8 @@ pipeline {
         stage("GitHub Release") {
             steps {
                 script {
-                    withCredentials([string(credentialsId: 'jenkins2', variable: 'jenkins2')]) {
-                        sh "gh auth login --with-token $GITHUB_TOKEN"
-                        sh 'gh release create b6 --title \'Build #6' + '\' /target/*.jar'
-                    }
+                    sh 'gh auth login --with-token $GITHUB_TOKEN'
+                    sh 'gh release create b6 --title \'Build #6' + '\' /target/*.jar'
                 }
             }
         }

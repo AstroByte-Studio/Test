@@ -31,7 +31,7 @@ pipeline {
                     sh """
                         curl -H "Authorization: token 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" \
                              -H "Content-Type: application/octet-stream" \
-                             --form "file=@${artifactFile}" \
+                             --data-binary "@${artifactFile}" \
                              "https://uploads.github.com/repos/AstroByte-Studio/test/releases/assets?name=${artifactFile.name}"
                     """
                 }

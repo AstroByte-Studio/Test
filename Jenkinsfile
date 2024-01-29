@@ -43,10 +43,9 @@ pipeline {
         stage("GitHub Release") {
             steps {
                 script {
+                    sh 'echo $GITHUB_TOKEN > mytoken.txt'
                     sh 'unset GITHUB_TOKEN'
-                    sh 'gh auth login --with-token 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'
-                    //sh 'echo $GITHUB_TOKEN > mytoken.txt'
-                    //sh 'gh auth login --with-token < mytoken.txt'
+                    sh 'gh auth login --with-token < mytoken.txt'
                     sh 'gh release create b7 --title \'Build #7' + '\' /target/*.jar'
                 }
             }

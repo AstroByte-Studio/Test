@@ -15,7 +15,7 @@ pipeline {
         stage("Check out") {
             steps {
                 script {
-                    git branch: 'main', credentialsId: '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', url: 'https://github.com/AstroByte-Studio/test.git'
+                    git branch: 'main', credentialsId: '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', url: 'https://github.com/AstroByte-Studio/test.git'
                 }
             }
         }

@@ -43,7 +43,10 @@ pipeline {
         stage("GitHub Release") {
             steps {
                 script {
-                    sh 'gh release create b7 --title \'Build #7\' ./target/*.jar'
+                    withCredentials([string(credentialsId: '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', variable: 'GITHUB_TOKEN')]) {
+                        sh 'gh release create b7 --title \'Build #7\' ./target/*.jar'
+                    }
+                    
                 }
             }
         }

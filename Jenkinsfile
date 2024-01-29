@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Use withCredentials to securely handle the GitHub token
-                    withCredentials([string(credentialsId: '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', variable: 'GH_TOKEN')]) 
+                    withCredentials([string(credentialsId: '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', variable: 'GH_TOKEN')]) {
                         sh 'gh release create b7 --title \'Build #7\' ./target/*.jar'
                     }
                 }

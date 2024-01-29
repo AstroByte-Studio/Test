@@ -6,7 +6,6 @@ pipeline {
         jdk "Java17"
     }
 
-
     stages {
         stage("Check out") {
             steps {
@@ -24,25 +23,17 @@ pipeline {
             }
         }
 
-                /*stage("Set Git Config") {
-                    steps {
-                        script {
-                            // Set Git user identity
-                            sh """
-                                git config --global user.email "phoenixgamer989@gmail.com"
-                                git config --global user.name "PhoenixGamer339"
-                            """
-                        }
-                    }
-                }*/
-
         stage("GitHub Release") {
             steps {
                 script {
+                    // Use withCredentials to securely handle the GitHub token
                     withCredentials([string(credentialsId: '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', variable: 'GH_TOKEN')]) {
+                        // Set the GITHUB_TOKEN environment variable explicitly
+                        env.GITHUB_TOKEN = GH_TOKEN
+
+                        // Run gh release create with the securely retrieved token
                         sh 'gh release create b7 --title \'Build #7\' ./target/*.jar'
                     }
-                    
                 }
             }
         }

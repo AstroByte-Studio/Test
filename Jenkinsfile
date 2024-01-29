@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        GITHUB_TOKEN = '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'
+        GITHUB_TOKEN = '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'
     }
 
 
@@ -15,7 +15,7 @@ pipeline {
         stage("Check out") {
             steps {
                 script {
-                    git branch: 'main', credentialsId: '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', url: 'https://github.com/AstroByte-Studio/test.git'
+                    git branch: 'main', credentialsId: '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', url: 'https://github.com/AstroByte-Studio/test.git'
                 }
             }
         }

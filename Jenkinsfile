@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        GITHUB_TOKEN = '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'
+        GITHUB_TOKEN = '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'
     }
 
 
@@ -15,7 +15,7 @@ pipeline {
         stage("Check out") {
             steps {
                 script {
-                    git branch: 'main', credentialsId: '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', url: 'https://github.com/AstroByte-Studio/test.git'
+                    git branch: 'main', credentialsId: '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', url: 'https://github.com/AstroByte-Studio/test.git'
                 }
             }
         }
@@ -43,7 +43,7 @@ pipeline {
         stage("GitHub Release") {
             steps {
                 script {
-                    withCredentials([string(credentialsId: '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', variable: 'GITHUB_TOKEN')]) {
+                    withCredentials([string(credentialsId: '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', variable: 'GH_TOKEN')]) {
                         sh 'gh release create b7 --title \'Build #7\' ./target/*.jar'
                     }
                     

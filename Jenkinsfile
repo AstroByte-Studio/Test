@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: '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', variable: 'GH_TOKEN')]) {
-                        sh 'gh auth login'
+                        sh 'gh auth login --with-token < mytoken.txt'
                         sh 'gh release create b7 --title \'Build #7\' ./target/*.jar'
                     }
                     

@@ -43,7 +43,7 @@ pipeline {
         stage("GitHub Release") {
             steps {
                 script {
-                    sh 'gh release create b7 --title \'Build #7' + '\' /target/*.jar'
+                    sh 'gh release create b7 --title \'Build #7\' ./target/*.jar'
                 }
             }
         }

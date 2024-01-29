@@ -14,8 +14,7 @@ pipeline {
         stage("Check out") {
             steps {
                 script {
-                    // Checkout code with credentials
-                    checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/AstroByte-Studio/test.git', credentialsId: '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']]])
+                    git branch: 'main', credentialsId: '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', url: 'https://github.com/AstroByte-Studio/test.git'
                 }
             }
         }
